@@ -1,43 +1,37 @@
 hero_title: "Navigating the Global Trade Tides: Policy in Transition"
-hero_subtitle: "Navigating the Global Trade Tides Policy in to omonarvation from the global suotiter and motten its bower."
-hero_button_text: "Read Full"
-hero_button_link: "/article.html"
-hero_image: "/images/hero.png"
-
+hero_subtitle: Navigating the Global Trade Tides Policy in to omonarvation from
+  the global suotiter and motten its bower.
+hero_button_text: Read Full
+hero_button_link: /article.html
+hero_image: /images/hero.png
 topics:
-  - name: "Global"
+  - name: Global
     link: "#"
-    style: "filled"
-  - name: "Europe"
+    style: filled
+  - name: Europe
     link: "#"
-    style: "filled"
-  - name: "Energy"
+    style: filled
+  - name: Energy
     link: "#"
-    style: "filled"
-  - name: "Global Pertaining"
+    style: filled
+  - name: Global Pertaining
     link: "#"
-    style: "filled"
-  - name: "Global Resenians"
+    style: filled
+  - name: Global Resenians
     link: "#"
-    style: "outline"
-  - name: "Economics"
+    style: outline
+  - name: Economics
     link: "#"
-    style: "outline"
-  - name: "Industrial & Environment"
+    style: outline
+  - name: Industrial & Environment
     link: "#"
-    style: "outline"
-  - name: "Others"
+    style: outline
+  - name: Others
     link: "#"
-    style: "outline"
-
-newsletter_title: "Newsletter Signup"
-newsletter_text: "Sign up for our newsletter to turn your inbox into a source of insight."
-
-most_read_title: "Most Read"
+    style: outline
+newsletter_title: Newsletter Signup
+newsletter_text: Sign up for our newsletter to turn your inbox into a source of insight.
+most_read_title: Most Read
 most_read:
   - title: "Navigating the Global Trade Tides: Policy Transition"
-    link: "/article.html"
-  - title: "Economic Recovery Strategies for South Asia"
-    link: "#"
-  - title: "Climate Finance and Development Goals"
-    link: "#"
+    link: /article.html
