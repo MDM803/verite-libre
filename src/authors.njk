@@ -1,0 +1,145 @@
+---
+layout: base.njk
+title: Authors & Fellows | Vérité Libre
+description: Meet the researchers, analysts, and non-resident fellows contributing to Vérité Libre.
+permalink: /authors/
+---
+
+<style>
+    .page-header {
+        background-color: var(--color-primary);
+        padding: 4rem 0;
+        color: white;
+        text-align: center;
+    }
+    .page-header h1 {
+        font-family: var(--font-heading);
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+    }
+    .page-header p {
+        opacity: 0.9;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    .authors-page-section {
+        padding: 4rem 0;
+    }
+    .author-type-heading {
+        font-family: var(--font-heading);
+        font-size: 1.5rem;
+        color: var(--color-primary);
+        margin-bottom: 2rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--color-secondary);
+    }
+    .authors-page-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+        margin-bottom: 4rem;
+    }
+    .author-page-card {
+        background: var(--color-bg-card);
+        border-radius: 12px;
+        padding: 2rem;
+        text-align: center;
+        box-shadow: var(--shadow-sm);
+        border: 1px solid var(--color-border);
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .author-page-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+    }
+    .author-page-avatar {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid var(--color-primary);
+        margin: 0 auto 1.25rem;
+        transition: transform 0.3s;
+    }
+    .author-page-card:hover .author-page-avatar {
+        transform: scale(1.05);
+    }
+    .author-page-name {
+        font-family: var(--font-heading);
+        font-size: 1.15rem;
+        color: var(--color-text-main);
+        margin-bottom: 0.25rem;
+    }
+    .author-page-position {
+        font-size: 0.85rem;
+        color: var(--color-primary);
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+    .author-page-bio {
+        font-size: 0.85rem;
+        color: var(--color-text-light);
+        line-height: 1.6;
+        margin-bottom: 1rem;
+    }
+    @media (max-width: 1024px) {
+        .authors-page-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+    @media (max-width: 768px) {
+        .authors-page-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    @media (max-width: 500px) {
+        .authors-page-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+    <div class="container">
+        <h1>Our Authors & Fellows</h1>
+        <p>Meet the researchers and experts behind our analysis and commentary</p>
+    </div>
+</section>
+
+<!-- AUTHORS SECTION -->
+<section class="authors-page-section">
+    <div class="container">
+        <!-- Staff -->
+        {% if collections.staffAuthors.length > 0 %}
+        <h2 class="author-type-heading">Staff Researchers</h2>
+        <div class="authors-page-grid">
+            {% for author in collections.staffAuthors %}
+            <div class="author-page-card">
+                <img src="{% if author.data.photo %}{{ author.data.photo }}{% else %}https://ui-avatars.com/api/?name={{ author.data.name | urlencode }}&background=7B1F1F&color=fff&size=200{% endif %}" 
+                     alt="{{ author.data.name }}" class="author-page-avatar">
+                <h3 class="author-page-name">{{ author.data.name }}</h3>
+                <p class="author-page-position">{{ author.data.position }}</p>
+                <p class="author-page-bio">{{ author.data.bio }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Non-Resident Fellows -->
+        {% if collections.fellows.length > 0 %}
+        <h2 class="author-type-heading">Non-Resident Fellows & Contributors</h2>
+        <div class="authors-page-grid">
+            {% for author in collections.fellows %}
+            <div class="author-page-card">
+                <img src="{% if author.data.photo %}{{ author.data.photo }}{% else %}https://ui-avatars.com/api/?name={{ author.data.name | urlencode }}&background=7B1F1F&color=fff&size=200{% endif %}" 
+                     alt="{{ author.data.name }}" class="author-page-avatar">
+                <h3 class="author-page-name">{{ author.data.name }}</h3>
+                <p class="author-page-position">{{ author.data.position }}</p>
+                <p class="author-page-bio">{{ author.data.bio }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</section>

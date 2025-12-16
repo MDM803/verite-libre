@@ -1,0 +1,74 @@
+---
+layout: base.njk
+title: Vérité Libre | Op-Eds & Strategic Analysis
+---
+
+<!-- HERO SECTION -->
+{% set featured = collections.featuredArticle %}
+<section class="hero-section">
+    <div class="hero-background" style="background-image: url('{% if featured.data.thumbnail %}{{ featured.data.thumbnail }}{% else %}/images/hero.png{% endif %}');"></div>
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title">{{ featured.data.title }}</h1>
+            <p class="hero-excerpt">{{ featured.data.excerpt }}</p>
+            <a href="{{ featured.url }}" class="btn-primary">Read Full</a>
+        </div>
+    </div>
+</section>
+
+<!-- TOPICS SECTION -->
+<section class="topics-section">
+    <div class="container">
+        <div class="topics-grid">
+            <a href="/opeds/?topic=global" class="topic-btn filled">Global</a>
+            <a href="/opeds/?topic=europe" class="topic-btn filled">Europe</a>
+            <a href="/opeds/?topic=energy" class="topic-btn filled">Energy</a>
+            <a href="/opeds/?topic=economics" class="topic-btn filled">Economics</a>
+            <a href="/opeds/?topic=environment" class="topic-btn outline">Environment</a>
+            <a href="/opeds/?topic=politics" class="topic-btn outline">Politics</a>
+            <a href="/opeds/" class="topic-btn outline">View All</a>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURED AUTHORS SECTION -->
+<section class="authors-section">
+    <div class="container">
+        <h2 class="section-title">Featured Authors</h2>
+        <div class="authors-grid">
+            {% for author in collections.authors | slice(0, 5) %}
+            <a href="/authors/" class="author-card">
+                <img src="{% if author.data.photo %}{{ author.data.photo }}{% else %}https://ui-avatars.com/api/?name={{ author.data.name | urlencode }}&background=7B1F1F&color=fff&size=200{% endif %}" 
+                     alt="{{ author.data.name }}" class="author-avatar">
+                <h3 class="author-name">{{ author.data.name }}</h3>
+                <p class="author-title">{{ author.data.position }}</p>
+                <p class="author-bio">{{ author.data.bio | truncate(80) }}</p>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-grid">
+            <div class="most-read">
+                <h2 class="cta-title">Most Read</h2>
+                <ol class="most-read-list">
+                    {% for article in collections.articles | slice(0, 3) %}
+                    <li><a href="{{ article.url }}">{{ article.data.title }}</a></li>
+                    {% endfor %}
+                </ol>
+            </div>
+            <div class="newsletter">
+                <h2 class="cta-title">Newsletter Signup</h2>
+                <p class="newsletter-text">Sign up for our newsletter to turn your inbox into a source of insight.</p>
+                <form class="newsletter-form" netlify>
+                    <input type="email" name="email" placeholder="Email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

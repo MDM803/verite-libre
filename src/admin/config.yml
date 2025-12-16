@@ -1,0 +1,128 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Media files will be stored here
+media_folder: "src/images/uploads"
+public_folder: "/images/uploads"
+
+# Site URL for previews
+site_url: https://vrlibre.netlify.app
+display_url: https://vrlibre.netlify.app
+
+# Logo in admin
+logo_url: /images/logo.png
+
+collections:
+  # ========== ARTICLES ==========
+  - name: "articles"
+    label: "Op-Eds & Articles"
+    folder: "src/content/articles"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Featured Image", name: "thumbnail", widget: "image", required: false }
+      - label: "Author"
+        name: "author"
+        widget: "relation"
+        collection: "authors"
+        search_fields: ["name"]
+        value_field: "name"
+        display_fields: ["name"]
+      - label: "Topic"
+        name: "topic"
+        widget: "select"
+        options:
+          - "Global"
+          - "Europe"
+          - "Energy"
+          - "Global Pertaining"
+          - "Global Resenians"
+          - "Economics"
+          - "Industrial & Environment"
+          - "Others"
+      - { label: "Excerpt", name: "excerpt", widget: "text" }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Featured", name: "featured", widget: "boolean", default: false }
+
+  # ========== AUTHORS ==========
+  - name: "authors"
+    label: "Authors & Fellows"
+    folder: "src/content/authors"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Title/Position", name: "position", widget: "string" }
+      - { label: "Photo", name: "photo", widget: "image", required: false }
+      - { label: "Bio", name: "bio", widget: "text" }
+      - { label: "Email", name: "email", widget: "string", required: false }
+      - label: "Type"
+        name: "type"
+        widget: "select"
+        options:
+          - "Staff"
+          - "Non-Resident Fellow"
+          - "Guest Contributor"
+
+  # ========== PAGES ==========
+  - name: "pages"
+    label: "Pages"
+    files:
+      - name: "about"
+        label: "About Page"
+        file: "src/content/pages/about.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+      - name: "contact"
+        label: "Contact Page"
+        file: "src/content/pages/contact.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Phone", name: "phone", widget: "string" }
+          - { label: "Address", name: "address", widget: "text" }
+          - { label: "Body", name: "body", widget: "markdown" }
+
+  # ========== SITE SETTINGS ==========
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - name: "general"
+        label: "General Settings"
+        file: "src/content/settings/general.yml"
+        fields:
+          - { label: "Site Title", name: "site_title", widget: "string" }
+          - { label: "Tagline", name: "tagline", widget: "string" }
+          - { label: "Footer Text", name: "footer_text", widget: "string" }
+          - { label: "Contact Email", name: "contact_email", widget: "string" }
+          - { label: "Contact Phone", name: "contact_phone", widget: "string" }
+      - name: "homepage"
+        label: "Home Page Settings"
+        file: "src/content/settings/homepage.yml"
+        fields:
+          - { label: "Hero Title", name: "hero_title", widget: "string" }
+          - { label: "Hero Subtitle", name: "hero_subtitle", widget: "text" }
+          - { label: "Hero Button Text", name: "hero_button_text", widget: "string", default: "Read Full" }
+          - { label: "Hero Button Link", name: "hero_button_link", widget: "string", default: "/article.html" }
+          - { label: "Hero Background Image", name: "hero_image", widget: "image" }
+          - label: "Topic Buttons"
+            name: "topics"
+            widget: "list"
+            fields:
+              - { label: "Topic Name", name: "name", widget: "string" }
+              - { label: "Link", name: "link", widget: "string", default: "#" }
+              - { label: "Style", name: "style", widget: "select", options: ["filled", "outline"] }
+          - { label: "Newsletter Title", name: "newsletter_title", widget: "string", default: "Newsletter Signup" }
+          - { label: "Newsletter Description", name: "newsletter_text", widget: "string" }
+          - { label: "Most Read Title", name: "most_read_title", widget: "string", default: "Most Read" }
+          - label: "Most Read Articles"
+            name: "most_read"
+            widget: "list"
+            max: 5
+            fields:
+              - { label: "Article Title", name: "title", widget: "string" }
+              - { label: "Link", name: "link", widget: "string" }
