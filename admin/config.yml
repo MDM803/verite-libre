@@ -100,3 +100,29 @@ collections:
           - { label: "Footer Text", name: "footer_text", widget: "string" }
           - { label: "Contact Email", name: "contact_email", widget: "string" }
           - { label: "Contact Phone", name: "contact_phone", widget: "string" }
+      - name: "homepage"
+        label: "Home Page Settings"
+        file: "content/settings/homepage.yml"
+        fields:
+          - { label: "Hero Title", name: "hero_title", widget: "string" }
+          - { label: "Hero Subtitle", name: "hero_subtitle", widget: "text" }
+          - { label: "Hero Button Text", name: "hero_button_text", widget: "string", default: "Read Full" }
+          - { label: "Hero Button Link", name: "hero_button_link", widget: "string", default: "/article.html" }
+          - { label: "Hero Background Image", name: "hero_image", widget: "image" }
+          - label: "Topic Buttons"
+            name: "topics"
+            widget: "list"
+            fields:
+              - { label: "Topic Name", name: "name", widget: "string" }
+              - { label: "Link", name: "link", widget: "string", default: "#" }
+              - { label: "Style", name: "style", widget: "select", options: ["filled", "outline"] }
+          - { label: "Newsletter Title", name: "newsletter_title", widget: "string", default: "Newsletter Signup" }
+          - { label: "Newsletter Description", name: "newsletter_text", widget: "string" }
+          - { label: "Most Read Title", name: "most_read_title", widget: "string", default: "Most Read" }
+          - label: "Most Read Articles"
+            name: "most_read"
+            widget: "list"
+            max: 5
+            fields:
+              - { label: "Article Title", name: "title", widget: "string" }
+              - { label: "Link", name: "link", widget: "string" }
